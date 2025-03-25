@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java_lab07.Controller">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="7.0" prefWidth="770.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="19.0" prefWidth="233.0" text="Witamy w salonach JavaFX" textAlignment="CENTER">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Wybierz miasto ">
+                     <HBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="townsComboBox" onAction="#handleTownSelection" promptText="Wszystkie miasta">
+                     <HBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label text="Wyszukaj po nazwie">
+                     <HBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="searchByNameFiels" promptText="nazwa pojazdu">
+                     <HBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="searchOkButton" mnemonicParsing="false" onAction="#handleSearchOkButton" text="OK">
+                     <HBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="17.0" prefWidth="58.0" text="Sortuj po:">
+               <VBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </VBox.margin>
+            </Label>
+            <RadioButton fx:id="nazwaRadioButton" mnemonicParsing="false" onAction="#handleSortRadioButton" text="nazwa">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="cenaRadioButton" mnemonicParsing="false" onAction="#handleSortRadioButton" text="cena">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="rokRadioButton" mnemonicParsing="false" onAction="#handleSortRadioButton" text="rok produkcji">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="8.0" right="8.0" top="2.0" />
+               </VBox.margin>
+            </RadioButton>
+            <Label text="Pokazuj:">
+               <VBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </VBox.margin>
+            </Label>
+            <CheckBox fx:id="showAvailableCheckBox" mnemonicParsing="false" onAction="#handleShowAvailableCheckBox" text="tylko dostępne">
+               <VBox.margin>
+                  <Insets left="15.0" right="8.0" />
+               </VBox.margin>
+            </CheckBox>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox prefHeight="353.0" prefWidth="143.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="39.0" prefWidth="143.0">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="zarezerwujButton" mnemonicParsing="false" onAction="#handleReservedButton" text="Zarezerwuj">
+                     <HBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <Text fx:id="reservationText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="126.13659501075745">
+               <VBox.margin>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="2.0" />
+               </VBox.margin>
+            </Text>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <TableView fx:id="vehicleTableView" BorderPane.alignment="CENTER">
+         <columns>
+            <TableColumn maxWidth="1.7976931348623157E308" prefWidth="120.0" text="Marka">
+               <cellValueFactory>
+                  <PropertyValueFactory property="brand" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="100.0" text="Model">
+               <cellValueFactory>
+                  <PropertyValueFactory property="model" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn maxWidth="1.7976931348623157E308" prefWidth="70.0" text="Rok Produkcji">
+               <cellValueFactory>
+                  <PropertyValueFactory property="year" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn maxWidth="1.7976931348623157E308" minWidth="9.14288330078125" prefWidth="116.0" text="Lokalizacja">
+               <cellValueFactory>
+                  <PropertyValueFactory property="location" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn maxWidth="1.7976931348623157E308" prefWidth="141.0" text="Cena">
+               <cellValueFactory>
+                  <PropertyValueFactory property="price" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn maxWidth="1.7976931348623157E308" prefWidth="141.0" text="Dostępność">
+               <cellValueFactory>
+                  <PropertyValueFactory property="price" />
+               </cellValueFactory>
+            </TableColumn>
+         </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <VBox>
+               <children>
+                  <Label text=" Telefon: +48 77 777 77 77, 48 666 666 666">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="(od pn. do pt. w godz. 08:00 - 17:00)" textFill="#000000cc">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox>
+               <children>
+                  <Label text="Email: pomoc@nieotomoto.pl">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="(od pn. do nd. w godz. 08:00 - 20:00)" textFill="#000000cc">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
